@@ -1,35 +1,30 @@
-import React, { useReducer, useEffect } from "react";
-import Cart from "./Cart";
+import React, { useEffect } from "react";
 import Basket from "./Basket";
-import useDataFetching, {
+import {
+  useStore,
   REQ_DATA,
   REQ_DATA_FAILURE,
   REQ_DATA_SUCCESS,
-} from "../hooks/useDataFetching";
+} from "../store";
 
 function App() {
-  const [state, dispatch] = useDataFetching();
+  const { dispatch } = useStore();
 
   useEffect(() => {
     setTimeout(() => {
       dispatch({ type: REQ_DATA });
     }, 1000);
     setTimeout(() => {
-      dispatch({ type: REQ_DATA_SUCCESS, payload: "Fetched DATA!" });
-    }, 2000);
+      dispatch({ type: REQ_DATA_SUCCESS, payload: "APP" });
+    }, 5000);
     setTimeout(() => {
       dispatch({ type: REQ_DATA_FAILURE });
-    }, 3000);
+    }, 9000);
   }, []);
 
   return (
     <div className="App">
       <header className="App-header">
-        {console.log(state)}
-        {state.data ? <h1>{state.data}</h1> : null}
-        {state.fetching ? <h1>Is fetching</h1> : null}
-        {state.error ? <h1>is Error!</h1> : null}
-        <Cart />
         <Basket />
       </header>
     </div>

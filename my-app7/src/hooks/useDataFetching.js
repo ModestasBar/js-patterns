@@ -6,10 +6,6 @@ const initial = {
   error: false,
 };
 
-export const REQ_DATA = "REQ_DATA";
-export const REQ_DATA_SUCCESS = "REQ_DATA_SUCCESS";
-export const REQ_DATA_FAILURE = "REQ_DATA_FAILURE";
-
 export default function useDataFetching() {
   const reducer = (state, action) => {
     switch (action.type) {
